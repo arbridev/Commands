@@ -33,7 +33,7 @@ Example output:
 
 ## Commits
 
-### Print the files included in the commit
+### List the files included a the commit
 
 ```bash
 git diff-tree --no-commit-id --name-only -r bd61ad98
@@ -50,6 +50,42 @@ Reference: https://stackoverflow.com/questions/424071/how-to-list-all-the-files-
 git branch -r
 ```
 
+### Rename
+
+```bash
+git branch -m newname
+```
+
+or, if you're on another branch:
+
+```bash
+git branch -m currentname newname
+```
+
+### List last commit by branch
+
+List remote Git branches and the last commit date for each branch. Sort by most recent commit date. 
+
+```bash
+for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r
+```
+
+Reference: https://gist.github.com/jasonrudolph/1810768
+
+## Remotes
+
+### Update local list of branches
+
+```bash
+git remote update origin --prune
+```
+
+### Rename
+
+```bash
+git remote rename fromname toname
+```
+
 ## Repair
 
 ### Returns the head to an indexed reference commit
@@ -58,4 +94,10 @@ In the example is 1 commit back on head
 
 ```bash
 git reset --soft HEAD~1
+```
+
+### Clean the remaining files after a hard reset
+
+```bash
+git clean -f -d
 ```
