@@ -50,6 +50,26 @@ Reference: https://stackoverflow.com/questions/424071/how-to-list-all-the-files-
 git branch -r
 ```
 
+### List branches that contains another
+
+```bash
+git branch --contains other-branch
+```
+
+To show the commits in oldbranch but not in newbranch:
+
+```bash
+git log newbranch..oldbranch
+```
+
+To show the diff by these commits (note there are three dots):
+
+```bash
+git diff newbranch...oldbranch
+```
+
+Reference: https://stackoverflow.com/questions/1710894/using-git-show-all-commits-that-are-in-one-branch-but-not-the-others
+
 ### Rename
 
 ```bash
