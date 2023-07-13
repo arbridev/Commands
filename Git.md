@@ -121,3 +121,37 @@ git reset --soft HEAD~1
 ```bash
 git clean -f -d
 ```
+
+## Log
+
+### Print commits with the modified files
+
+```bash
+git log --raw
+```
+
+### Print commits from the specified commit in the current branch
+
+```bash
+git log <commit hash>^..
+```
+
+### Count commits from the last in main to the last in the specified branch
+
+```bash
+git rev-list --count main..branch_name
+```
+
+### Count commits from the last in main to the last in the current branch
+
+```bash
+git rev-list main..HEAD --count
+```
+
+## Rebase
+
+### Rebase from the last in main to the last in the current branch
+
+```bash
+git rebase -i HEAD~$(git rev-list main..HEAD --count)
+```
